@@ -1,4 +1,9 @@
 #!/bin/bash
+################
+# Author atif
+# Date 2024-03-24
+# Description: This script takes a GitHub username and repository name as arguments, and prints information about the repository.
+################
 
 # Prompt the user for their GitHub username
 read -p "Enter your GitHub username: " username
