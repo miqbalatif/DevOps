@@ -22,20 +22,20 @@ game_area_width = SCREEN_WIDTH - 50  # Adjust as needed
 game_area_height = SCREEN_HEIGHT   # Adjust as needed
 
 # Load road image or create road-like pattern
-road_img = pygame.image.load('/home/atif/Desktop/Devops_learning/python/road.jpg')  # Load road image
+road_img = pygame.image.load('/home/atif/Desktop/Devops_learning/cargame_python/road.jpg')  # Load road image
 road_img = pygame.transform.scale(road_img, (SCREEN_WIDTH-60, SCREEN_HEIGHT))  # Resize road image
 
 # Define the car
 car_width = 60
 car_height = 100
-car_img = pygame.image.load('/home/atif/Desktop/Devops_learning/python/redcar.jpg')  # Load car image
+car_img = pygame.image.load('/home/atif/Desktop/Devops_learning/cargame_python/redcar.jpg')  # Load car image
 car_img = pygame.transform.scale(car_img, (car_width, car_height))  # Resize car image
 car_x = SCREEN_WIDTH // 2 - car_width // 2
 car_y = SCREEN_HEIGHT - car_height - 20
 car_speed = 5
 
  # Define trees
-tree_img = pygame.image.load('/home/atif/Desktop/Devops_learning/python/trees.jpeg')  # Load tree image
+tree_img = pygame.image.load('/home/atif/Desktop/Devops_learning/cargame_python/trees.jpeg')  # Load tree image
 tree_img = pygame.transform.scale(tree_img, (50, 50))  # Resize tree image
 
 # Define potholes
@@ -50,11 +50,11 @@ score = 0
 
 # Load sound effect
 pygame.mixer.init()
-collision_sound = pygame.mixer.Sound("/home/atif/Desktop/Devops_learning/python/explosion.mp3")
+collision_sound = pygame.mixer.Sound("/home/atif/Desktop/Devops_learning/cargame_python/explosion.mp3")
 
 # Function to create a new pothole
 def create_pothole():
-    pothole_x = random.randint(pothole_radius, SCREEN_WIDTH - pothole_radius)
+    pothole_x = random.randint(pothole_radius, game_area_width - pothole_radius)
     pothole_y = -pothole_radius
     potholes.append(pygame.Rect(pothole_x, pothole_y, pothole_radius * 2, pothole_radius * 2))
 
@@ -96,8 +96,6 @@ while running:
         create_pothole()
 
     # Draw trees
-    #screen.blit(tree_img, (50, SCREEN_HEIGHT - 200))  # Left tree
-    #screen.blit(tree_img, (SCREEN_WIDTH - 120, SCREEN_HEIGHT - 200))  # Right tree
     for y in range(0, SCREEN_HEIGHT, 50):  # Adjust the step size according to your preference
         screen.blit(tree_img, (20, y))  # Left tree
         screen.blit(tree_img, (SCREEN_WIDTH - 60, y))  # Right tree
@@ -105,7 +103,6 @@ while running:
     
 
     # Draw the car
-    #pygame.draw.rect(screen, GREEN, (car_x, car_y, car_width, car_height))
     screen.blit(car_img, (car_x, car_y))
     
      # Draw potholes
